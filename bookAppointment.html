@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('hospital2.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        header {
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            vertical-align: middle;
+            width: 50px;
+            margin-right: 10px;
+        }
+        .container {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .form-section {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9); 
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #34495e;
+        }
+        footer {
+            background-color: rgba(44, 62, 80, 0.8); 
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function fetchDoctorDetails() {
+            const doctorId = document.getElementById("doctor_id").value;
+
+            if (doctorId) {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "fetch_doctors_details.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+
+                        if (response.success) {
+                            document.getElementById("doctor_name").value = response.doctor_name;
+                            document.getElementById("category").value = response.category;
+                            document.getElementById("subcategory").value = response.subcategory;
+                        } else {
+                            alert("Doctor not found!");
+                        }
+                    }
+                };
+
+                xhr.send("doctor_id=" + doctorId);
+            }
+        }
+
+        function redirectToPage() {
+            window.location.href = "show_appointment.html";
+        }
+    </script>
+</head>
+<body>
+<header>
+    <img src="logo.jpeg" alt="Hospital Logo">
+    <span>CITY CARE HOSPITAL</span>
+</header>
+
+<div class="container">
+    <h1>Book Appointment</h1>
+    <form class="form-container" action="book_appointment.php" method="POST">
+        <!-- Patient Details -->
+        <div class="form-section">
+            <h2>Patient Details</h2>
+            <input type="text" name="patient_name" placeholder="Patient Name" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="text" name="phone_number" placeholder="Phone Number" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+
+        <!-- Doctor Details -->
+        <div class="form-section">
+            <h2>Doctor Details</h2>
+            <input type="text" id="doctor_id" name="doctor_id" placeholder="Doctor ID" required onblur="fetchDoctorDetails()">
+            <input type="text" id="doctor_name" name="doctor_name" placeholder="Doctor Name" readonly>
+            <input type="text" id="category" name="category" placeholder="Category" readonly>
+            <input type="text" id="subcategory" name="subcategory" placeholder="Subcategory" readonly>
+        </div>
+
+        <!-- Appointment Details -->
+        <div class="form-section">
+            <h2>Appointment Details</h2>
+            <input type="date" name="appointment_date" required>
+            <input type="hidden" name="appointment_time" id="appointment_time"> <!-- Hidden field for auto-generated time -->
+            <button type="submit">Book Appointment</button>
+            <button type="button" onclick="redirectToPage()">Show Appointment Details</button>
+        </div>
+    </form>
+</div>
+
+<footer>
+    &copy; 2024 Hospital Management System
+</footer>
+</body>
+</html>
+

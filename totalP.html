@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Care Hospital</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('hospital2.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .header, .footer {
+            background-color: #08042c;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .container {
+            margin: 50px auto;
+            width: 60%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .container input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            padding: 10px 15px;
+            background-color: #030825;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #0b0529;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>City Care Hospital</h1>
+    </div>
+    <div class="container">
+        <h2>Search Doctor Appointments</h2>
+        <input type="text" id="doctorId" placeholder="Enter Doctor ID">
+        <button onclick="fetchAppointments()">Show</button>
+        <div class="results" id="results"></div>
+    </div>
+    
+    <script>
+        function fetchAppointments() {
+            const doctorId = document.getElementById('doctorId').value;
+
+            if (!doctorId) {
+                alert('Please enter a Doctor ID.');
+                return;
+            }
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'fetch_appointments.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                document.getElementById('results').innerHTML = this.responseText;
+            };
+            xhr.send('doctor_id=' + doctorId);
+        }
+    </script>
+</body>
+</html>

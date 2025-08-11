@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Doctor</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+
+    <header>
+        <img src="logo.jpeg" alt="Hospital Logo"> 
+        <h1>CITY CARE HOSPITAL</h1>
+    </header>
+
+    <!-- Search Container -->
+    <div class="search-container">
+        <h2>FIND DOCTOR</h2>
+
+        <!-- Doctor Search Form -->
+        <form method="POST" action="searchDoctor.php">
+            <!-- Doctor's Category Dropdown -->
+            <select name="doctorCategory" id="doctorCategory">
+                <option value="">Select Doctor's Category</option>
+                <option value="General Physician">General Physician</option>
+                <option value="Specialist">Specialist</option>
+                <option value="Surgeon">Surgeon</option>
+            </select>
+
+            <!-- Doctor's Sub-Category Dropdown -->
+            <select name="doctorSubCategory" id="doctorSubCategory">
+                <option value="">Select Doctor's Sub-Category</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Neurologist">Neurologist</option>
+                <option value="Orthopedic">Orthopedic</option>
+                <option value="Gastro">Gastro</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Medicine">Medicine</option>
+            </select>
+
+
+            <!-- Search Button -->
+            <button type="submit" id="searchButton">Search</button>
+        </form>
+
+        <!-- Search Result Display -->
+        <div class="result" id="searchResult"></div>
+    </div> 
+</body>
+</html>
+
+
