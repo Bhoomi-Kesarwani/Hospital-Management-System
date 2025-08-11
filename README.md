@@ -27,7 +27,7 @@ A web-based application built with HTML, CSS, JavaScript, PHP, and MySQL for aut
 
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/Bhoomi-Kesarwani/hospital-management-system.git
+   git clone https://github.com/Bhoomi-Kesarwani/Hospital-Management-System.git
 
 2. Copy the project folder to your local server's web root directory (htdocs for XAMPP).
 
@@ -42,7 +42,5 @@ A web-based application built with HTML, CSS, JavaScript, PHP, and MySQL for aut
 
 6. Start your local server and navigate to:
 
-http://localhost/hospital-management-system/
+http://localhost/Hospital-Management-System/
 
-- Local server environment like [XAMPP](https://www.apachefriends.org/index.html), [WAMP](http://www.wampserver.com/en/), or [MAMP](https://www.mamp.info/en/)  
-- Basic knowledge of PHP and MySQL
