@@ -4,10 +4,10 @@ A web-based application built with HTML, CSS, JavaScript, PHP, and MySQL for aut
 
 ## Features
 - Secure login and registration system for legitimate internal staff  
-- Doctor profile management and real-time appointment scheduling  
+- Doctor profile management and  appointment scheduling  
 - Inventory tracking system  
 - Automated billing and invoice generation  
-- Doctor-wise daily reporting dashboard  
+- Doctor-wise  reporting dashboard  
 
 
 ## Tech Stack
